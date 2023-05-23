@@ -1,3 +1,4 @@
+// Generate random number and assign it to a choice (rock, paper, or scissors)
 function getComputerChoice() {
     const randomNum = (Math.floor(Math.random() * 3));
     if (randomNum === 0) {
@@ -11,6 +12,7 @@ function getComputerChoice() {
     }
 }
 
+// Start the game round by comparing choices and return the result (win, lose, or tie)
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
     if (playerSelection === 'Rock' || playerSelection === 'Paper' || playerSelection === 'Scissors') {
@@ -56,6 +58,7 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
+// Start a 5-round game and compare the total score at the end to determine the winner
 function game() {
     let round;
     let playerScore = 0;
@@ -65,7 +68,8 @@ function game() {
         const playerSelection = prompt(`Round ${round}, Rock Paper Scissors?`);
         const computerSelection = getComputerChoice();
         const result = playRound(playerSelection, computerSelection);
-        console.log(`Round ${round}: ` + `You Chose ${playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()}, ` + result);
+        console.log(`Round ${round}: ` + `You Chose ${playerSelection[0].toUpperCase() + 
+            playerSelection.slice(1).toLowerCase()}, ` + result);
         if (result.includes('Win')) {
             playerScore++;
         }
