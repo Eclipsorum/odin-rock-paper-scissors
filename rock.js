@@ -17,7 +17,7 @@ function playRound(playerSelection, computerSelection) {
         switch(playerSelection) {
             case 'Rock':
                 if (computerSelection === 'Rock') {
-                    return "It's a tie! Rock vs Rock";
+                    return "It's a tie! Rock vs Rock";                   
                 }
                 else if (computerSelection === 'Paper') {
                     return "You Lose! Paper beats Rock";
@@ -38,15 +38,15 @@ function playRound(playerSelection, computerSelection) {
                 }
 
             case 'Scissors':
-                    if (computerSelection === 'Rock') {
-                        return "You Lose! Rock beats Scissors"; 
-                    }
-                    else if (computerSelection === 'Paper') {
-                        return "You Win! Scissors beats Paper"; 
-                    }
-                    else {
-                        return "It's a tie! Scissors vs Scissors";
-                    }
+                if (computerSelection === 'Rock') {
+                    return "You Lose! Rock beats Scissors"; 
+                }
+                else if (computerSelection === 'Paper') {
+                    return "You Win! Scissors beats Paper"; 
+                }
+                else {
+                    return "It's a tie! Scissors vs Scissors";
+                }
         }
     }
 
@@ -54,4 +54,36 @@ function playRound(playerSelection, computerSelection) {
         return 'Bad Input!';
     }
 
+}
+
+function game() {
+    let round;
+    let playerScore = 0;
+    let compScore = 0;
+
+    for (round = 1; round <= 5; round++) {
+        const playerSelection = prompt(`Round ${round}, Rock Paper Scissors?`);
+        const computerSelection = getComputerChoice();
+        const result = playRound(playerSelection, computerSelection);
+        console.log(`Round ${round}: ` + `You Chose ${playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()}, ` + result);
+        if (result.includes('Win')) {
+            playerScore++;
+        }
+        else if (result.includes('Lose')) {
+            compScore++;
+        }
+    }
+
+    console.log(`Your Score: ${playerScore}`);
+    console.log(`Computer Score: ${compScore}`);
+
+    if (playerScore > compScore) {
+        console.log('Congrats! You Win');
+    }
+    else if (playerScore < compScore) {
+        console.log('Loser!');
+    }
+    else {
+        console.log('Tie');
+    }
 }
