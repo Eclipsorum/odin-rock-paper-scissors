@@ -45,25 +45,30 @@ function game() {
             const playerSelection = playerPrompt;
             const computerSelection = getComputerChoice();
             const result = playRound(playerSelection, computerSelection);
-
-            console.log(`Round ${round}: ` + `${playerSelection[0].toUpperCase() + 
-                playerSelection.slice(1).toLowerCase()} VS ${computerSelection}, ` + result);
-    
+            const showResult = `Round ${round}: ` + `${playerSelection[0].toUpperCase() + 
+                playerSelection.slice(1).toLowerCase()} VS ${computerSelection}, ` + result;
+  
             if (result.includes('Win')) {
                 playerScore++;
+                console.log(showResult);
             }
             else if (result.includes('Lose')) {
                 compScore++;
+                console.log(showResult);
             }
             else if (result.includes('Bad')) {
                 round--;
+                console.log('Bad input!');
+            }
+            else {
+                console.log(showResult);
             }
         }
 
         else {
             round = 5;
         }
-        
+
         round++;
     }
 
