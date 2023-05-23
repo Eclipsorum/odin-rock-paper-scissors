@@ -72,6 +72,9 @@ function game() {
         else if (result.includes('Lose')) {
             compScore++;
         }
+        else if (result.includes('Bad')) {
+            round--;
+        }
     }
 
     console.log(`Your Score: ${playerScore}`);
